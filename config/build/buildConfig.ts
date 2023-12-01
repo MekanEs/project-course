@@ -20,6 +20,6 @@ export function buildConfig(options: BuildOptions): webpack.Configuration {
       clean: true,
     },
     plugins: buildPlugin(options.paths),
-    resolve: buildResolvers(),
+    resolve: buildResolvers(options),
   };
 }

@@ -1,6 +1,5 @@
 import { FC, useMemo, useState, ReactElement } from 'react';
-
-import { LOCAL_STRORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
+import { LOCAL_STRORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
 const defaultTheme = localStorage.getItem(LOCAL_STRORAGE_THEME_KEY) as Theme;
 const ThemeProvider: FC<{ children: ReactElement }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
