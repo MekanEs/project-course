@@ -1,0 +1,15 @@
+.AppLink {
+  padding: 6px;
+  border-radius: 5px;
+  &:hover {
+    color: var(--secondary-color);
+  }
+}
+
+.main {
+  text-decoration: none;
+}
+
+.accent {
+  text-decoration: underline;
+}
