@@ -19,7 +19,7 @@ export function buildConfig(options: BuildOptions): webpack.Configuration {
       path: options.paths.build,
       clean: true,
     },
-    plugins: buildPlugin(options.paths),
+    plugins: buildPlugin(options.paths, options.isDev),
     resolve: buildResolvers(options),
   };
 }

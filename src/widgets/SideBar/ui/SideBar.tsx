@@ -4,6 +4,7 @@ import styles from './SideBar.module.scss';
 import { Button } from 'shared/ui';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { ThemeToggler } from 'widgets/ThemeToggler';
+import { LangToggler } from 'widgets/LangToggler/ui/LangToggler';
 
 interface SideBarProps {
   className?: string;
@@ -19,8 +20,9 @@ export const SideBar: FC<SideBarProps> = ({ className }) => {
       <Button theme={ButtonTheme.OUTLINED} onClick={onToggle}>
         toggle
       </Button>
-      <div className={classNames(styles.switchers)}>
+      <div className={classNames(styles.switchers, { [styles.colomned]: collapsed })}>
         <ThemeToggler />
+        <LangToggler />
       </div>
     </div>
   );

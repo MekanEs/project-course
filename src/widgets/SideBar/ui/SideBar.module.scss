@@ -19,4 +19,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  gap: 10px;
+}
+
+.colomned {
+  flex-direction: column;
+  align-items: center;
+}
+
+.lang {
+  margin-left: 10px;
 }
