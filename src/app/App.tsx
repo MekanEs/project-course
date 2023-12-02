@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react';
+import { type FC, Suspense } from 'react';
 
 import { useTheme } from './providers/themeProvider';
 
@@ -13,15 +13,15 @@ import 'shared/config/i18n/i18n';
 const App: FC = () => {
   const { theme } = useTheme();
   return (
-    <Suspense fallback={'Loading...'}>
-      <div className={classNames('app', {}, [theme])}>
-        <Navbar />
-        <div className='content-block'>
-          <SideBar />
-          <AppRouter />
-        </div>
-      </div>
-    </Suspense>
+      <Suspense fallback={'Loading...'}>
+          <div className={classNames('app', {}, [theme])}>
+              <Navbar />
+              <div className='content-block'>
+                  <SideBar />
+                  <AppRouter />
+              </div>
+          </div>
+      </Suspense>
   );
 };
 

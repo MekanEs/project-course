@@ -1,0 +1,6 @@
+{
+  "presets": ["@babel/preset-env"]
+  // "plugins": [
+  //   ["i18next-extract", { "nsSeparator": "~", "locales": ["en", "ru"], "defaultNS": ["ru", "en"] }]
+  // ]
+}

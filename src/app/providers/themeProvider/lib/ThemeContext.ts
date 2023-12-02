@@ -8,8 +8,8 @@ export enum Theme {
 }
 
 export interface ThemeContextProps {
-  theme?: Theme;
-  setTheme?: React.Dispatch<React.SetStateAction<Theme>>;
+  theme?: Theme
+  setTheme?: React.Dispatch<React.SetStateAction<Theme>>
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({});

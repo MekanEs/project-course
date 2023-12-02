@@ -1,11 +1,11 @@
-import webpack from 'webpack';
+import type webpack from 'webpack';
 
 import { buildLoaders } from './buildLoaders';
 import { buildPlugin } from './buildPlugins';
 import { buildResolvers } from './buildResolvers';
-import { BuildOptions } from '../types/config';
+import { type BuildOptions } from '../types/config';
 import { buildDevServer } from './buildDevServer';
-export function buildConfig(options: BuildOptions): webpack.Configuration {
+export function buildConfig (options: BuildOptions): webpack.Configuration {
   return {
     mode: options.mode,
     module: {
