@@ -1,17 +1,19 @@
 :root {
-  //font
-  --font-family-main: Consolas, 'Times New Roman', Serif;
-  //M
-  --font-size-m: 16;
-  --font_line-m: 24;
-  --font-m: var(--font-size-m) / var(--font_line-m) var(--font-family-main);
-  //L
-  --font-size-l: 24px;
-  --font_line-l: 32px;
-  --font-m: var(--font-size-l) / var(--font_line-l) var(--font-family-main);
+    // font
+    --font-family-main: consolas, 'Times New Roman', serif;
 
-  // Sizes
-  --navbar-height: 60px;
-  --sideBar-collapsed-width: 100px;
-  --sideBar-width: 300px;
+    // M
+    --font-size-m: 16;
+    --font-line-m: 24;
+    --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+
+    // L
+    --font-size-l: 24px;
+    --font-line-l: 32px;
+    --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+
+    // Sizes
+    --navbar-height: 60px;
+    --sidebar-collapsed-width: 100px;
+    --sidebar-width: 300px;
 }

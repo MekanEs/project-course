@@ -1,5 +1,7 @@
 {
-  "Main": "Main",
-  "About": "About us",
-  "Lang": "English"
+    "Main": "Main",
+    "About": "About us",
+    "Lang": "English",
+    "Page not found": "Page not found",
+    "Loading": "Loading..."
 }

@@ -1,20 +1,20 @@
 @import './reset';
-@import './variables/global.scss';
-@import './theme/dark.scss';
-@import './theme/normal.scss';
+@import './variables/global';
+@import './theme/dark';
+@import './theme/normal';
 
 .app {
-  background-color: var(--bg-color);
-  height: 100vh;
-  font: var(--font-m);
-  color: var(--primary-color);
+    background-color: var(--bg-color);
+    height: 100vh;
+    font: var(--font-m);
+    color: var(--primary-color);
 }
 
 .content-block {
-  display: flex;
+    display: flex;
 }
 
 .page {
-  flex-grow: 1;
-  padding: 10px;
+    flex-grow: 1;
+    padding: 10px;
 }

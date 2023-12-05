@@ -1,18 +1,18 @@
 .Button {
-  cursor: pointer;
-  color: inherit;
+    cursor: pointer;
+    color: inherit;
 }
 
 .clear {
-  padding: 0;
-  background: none;
-  border: none;
-  outline: none;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
 }
 
 .outlined {
-  padding: 5px;
-  border-radius: 10px;
-  border: 1px solid #000;
-  background-color: var(--bg-color);
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: var(--bg-color);
 }
