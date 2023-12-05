@@ -2,6 +2,7 @@
 @import './variables/global';
 @import './theme/dark';
 @import './theme/normal';
+@import './variables/mixins';
 
 .app {
     background-color: var(--bg-color);

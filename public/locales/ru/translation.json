@@ -3,5 +3,7 @@
     "About": "О нас",
     "Lang": "Русский",
     "Page not found": "Страница не найдена",
-    "Loading": "Загрузка..."
+    "Loading": "Загрузка...",
+    "Something went wrong": "Произошла ошибка",
+    "Reload page": "Обновить страницу"
 }
