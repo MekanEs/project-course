@@ -1,20 +1,27 @@
 import { type FC } from 'react';
 import { classNames } from 'shared/lib';
 import styles from './LangToggler.module.scss';
-import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui';
+import { useTranslation } from 'react-i18next';
 interface LangTogglerProps {
-  className?: string
+    className?: string;
 }
 
 export const LangToggler: FC<LangTogglerProps> = ({ className }) => {
-  const { t, i18n } = useTranslation();
-  const onToggle = (): void => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
-  };
-  return (
-      <Button onClick={onToggle} className={classNames(styles.LangToggler, {}, [className])}>
-          {t('Lang')}
-      </Button>
-  );
+    const { t, i18n } = useTranslation();
+    const onToggle = async (): Promise<void> => {
+        i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
+        console.log(i18n.languages);
+    };
+
+    return (
+        <Button
+            onClick={() => {
+                onToggle();
+            }}
+            className={classNames(styles.LangToggler, {}, [className])}
+        >
+            {t('Lang')}
+        </Button>
+    );
 };

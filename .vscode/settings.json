@@ -1,8 +1,4 @@
 {
-    "i18n-ally.localesPaths": [
-        "public/locales",
-        "public/locales/ru/translation"
-    ],
-    "i18n-ally.enabledParsers": ["ts", "js", "json"],
-    "i18n-ally.keystyle": "nested"
+    "i18n-ally.localesPaths": ["public/locales"],
+    "i18n-ally.enabledParsers": ["ts", "js", "json"]
 }

@@ -1,3 +1,5 @@
+@import '../../../app/styles/theme/dark';
+
 .Button {
     cursor: pointer;
     color: inherit;
@@ -10,9 +12,17 @@
     outline: none;
 }
 
-.outlined {
+.outlined_primary {
     padding: 5px;
     border-radius: 10px;
     border: 1px solid #000;
     background-color: var(--bg-color);
+}
+
+.outlined_secondary {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
 }

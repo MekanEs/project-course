@@ -7,13 +7,14 @@ describe('Sidebar', () => {
         const id = 'sidebar';
         renderWithTranslation(<SideBar />);
         expect(screen.getByTestId(id)).toBeInTheDocument();
+        screen.debug();
     });
     it('toggle on click', () => {
         const id = 'sidebar';
         const BtnId = 'sidebar-toggle';
-        const toggleBtn = screen.getByTestId(BtnId);
-
         renderWithTranslation(<SideBar />);
+
+        const toggleBtn = screen.getByTestId(BtnId);
 
         expect(screen.getByTestId(id)).toHaveClass('collapsed');
 

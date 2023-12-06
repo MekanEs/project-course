@@ -4,23 +4,32 @@ import styles from './AppLink.module.scss';
 import { type LinkProps, Link } from 'react-router-dom';
 
 export enum AppLinkTheme {
-  MAIN = 'main',
-  ACCENT = 'accent',
+    MAIN = 'main',
+    ACCENT = 'accent',
 }
 interface AppLinkProps extends LinkProps {
-  className?: string
-  theme?: string
+    className?: string;
+    theme?: string;
 }
 
 export const AppLink: FC<AppLinkProps> = (props) => {
-  const { className, children, to, theme = AppLinkTheme.MAIN, ...otherProps } = props;
-  return (
-      <Link
-      to={to}
-      className={classNames(styles.AppLink, {}, [className, styles[theme]])}
-      {...otherProps}
-    >
-          {children}
-      </Link>
-  );
+    const {
+        className,
+        children,
+        to,
+        theme = AppLinkTheme.MAIN,
+        ...otherProps
+    } = props;
+    return (
+        <Link
+            to={to}
+            className={classNames(styles.AppLink, {}, [
+                className,
+                styles[theme],
+            ])}
+            {...otherProps}
+        >
+            {children}
+        </Link>
+    );
 };

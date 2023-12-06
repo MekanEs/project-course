@@ -28,7 +28,7 @@ export const SideBar: FC<SideBarProps> = ({ className }) => {
         >
             <Button
                 data-testid="sidebar-toggle"
-                theme={ButtonTheme.OUTLINED}
+                theme={ButtonTheme.OUTLINED_PRIMARY}
                 onClick={onToggle}
             >
                 {collapsed ? t('open') : t('close')}
