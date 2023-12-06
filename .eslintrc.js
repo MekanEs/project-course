@@ -35,6 +35,17 @@ module.exports = {
         '@typescript-eslint/strict-boolean-expressions': 0,
         '@typescript-eslint/prefer-nullish-coalescing': 0,
         '@typescript-eslint/no-floating-promises': 0,
-        'i18next/no-literal-string': [2, { markupOnly: true }],
+        'i18next/no-literal-string': [
+            2,
+            { markupOnly: true, ignoreAttribute: ['data-testid'] },
+        ],
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 0,
+            },
+        },
+    ],
 };

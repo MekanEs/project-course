@@ -5,25 +5,42 @@ import { Button } from 'shared/ui';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { ThemeToggler } from 'widgets/ThemeToggler';
 import { LangToggler } from 'widgets/LangToggler/ui/LangToggler';
+import { useTranslation } from 'react-i18next';
 
 interface SideBarProps {
-  className?: string
+    className?: string;
 }
 
 export const SideBar: FC<SideBarProps> = ({ className }) => {
-  const [collapsed, setCollapsed] = useState<boolean>(true);
-  const onToggle: () => void = () => {
-    setCollapsed((prev) => !prev);
-  };
-  return (
-      <div className={classNames(styles.SideBar, { [styles.collapsed]: collapsed }, [className])}>
-          <Button theme={ButtonTheme.OUTLINED} onClick={onToggle}>
-              toggle
-          </Button>
-          <div className={classNames(styles.switchers, { [styles.colomned]: collapsed })}>
-              <ThemeToggler />
-              <LangToggler />
-          </div>
-      </div>
-  );
+    const [collapsed, setCollapsed] = useState<boolean>(true);
+    const { t } = useTranslation();
+    const onToggle: () => void = () => {
+        setCollapsed((prev) => !prev);
+    };
+    return (
+        <div
+            data-testid="sidebar"
+            className={classNames(
+                styles.SideBar,
+                { [styles.collapsed]: collapsed },
+                [className]
+            )}
+        >
+            <Button
+                data-testid="sidebar-toggle"
+                theme={ButtonTheme.OUTLINED}
+                onClick={onToggle}
+            >
+                {collapsed ? t('open') : t('close')}
+            </Button>
+            <div
+                className={classNames(styles.switchers, {
+                    [styles.colomned]: collapsed,
+                })}
+            >
+                <ThemeToggler />
+                <LangToggler />
+            </div>
+        </div>
+    );
 };

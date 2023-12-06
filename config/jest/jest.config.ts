@@ -4,6 +4,7 @@
  */
 
 import type { Config } from 'jest';
+import path from 'path';
 
 const config: Config = {
     clearMocks: true,
@@ -23,6 +24,13 @@ const config: Config = {
     testEnvironment: 'jsdom',
     testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
     rootDir: '../../',
+    roots: ['<rootDir>'],
+    modulePaths: ['<rootDir>src'],
+    setupFilesAfterEnv: ['<rootDir>config/jest/jestSetup.ts'],
+    moduleNameMapper: {
+        '\\.(css|less|scss|sss|styl)$': 'identity-obj-proxy',
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    },
 
     // All imported modules in your tests should be mocked automatically
     // automock: false,
@@ -126,7 +134,6 @@ const config: Config = {
     // The root directory that Jest should scan for tests and modules within
 
     // A list of paths to directories that Jest should use to search for files in
-    roots: ['<rootDir>'],
 
     // Allows you to use a custom runner instead of Jest's default test runner
     // runner: "jest-runner",

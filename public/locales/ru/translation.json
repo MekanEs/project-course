@@ -5,5 +5,7 @@
     "Page not found": "Страница не найдена",
     "Loading": "Загрузка...",
     "Something went wrong": "Произошла ошибка",
-    "Reload page": "Обновить страницу"
+    "Reload page": "Обновить страницу",
+    "open": "открыть",
+    "close": "закрыть"
 }

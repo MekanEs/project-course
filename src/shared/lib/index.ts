@@ -1,3 +1,3 @@
 import { classNames } from './classNames/classNames';
-
-export { classNames };
+import { renderWithTranslation } from './renderWithTranslation/renderWithTranslation';
+export { classNames, renderWithTranslation };
