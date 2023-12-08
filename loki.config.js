@@ -1,11 +1,10 @@
 module.exports = {
-    diffingEngine: 'pixelmatch',
-    pixelmatch: {
-        threshold: 0.5,
-        options: {
-            threshold: 0.5,
-        },
+    diffingEngine: 'looks-same',
+    'looks-same': {
+        ignoreCaret: true,
+        tolerance: 5,
     },
+
     verboseRenderer: true,
     configurations: {
         'chrome.laptop': {
