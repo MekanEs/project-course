@@ -2,7 +2,11 @@ module.exports = {
     diffingEngine: 'looks-same',
     'looks-same': {
         ignoreCaret: true,
+        strict: false, // strict comparsion
         tolerance: 5,
+        pixelRatio: 2,
+        ignoreAntialiasing: true,
+        antialiasingTolerance: 3,
     },
 
     verboseRenderer: true,
