@@ -2,3 +2,4 @@
 babel.config.js
 webpack.config.ts
 .stylelintrc.json
+loki.config.js
