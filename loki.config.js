@@ -1,9 +1,6 @@
 module.exports = {
     diffingEngine: 'pixelmatch',
-    chromeEnableAnimations: false,
     verboseRenderer: true,
-    chromeFlags:
-        '--headless --disable-gpu --hide-scrollbars --wm-window-animations-disabled',
     configurations: {
         'chrome.laptop': {
             target: 'chrome.app',
