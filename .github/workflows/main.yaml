@@ -1,5 +1,6 @@
 name: project CI
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
   pull:
     branches: ["main"]
       push:
