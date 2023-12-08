@@ -1,8 +1,4 @@
 module.exports = {
-    diffingEngine: 'looks-same',
-    'looks-same': {
-        ignoreCaret: true,
-    },
     verboseRenderer: true,
     configurations: {
         'chrome.laptop': {
