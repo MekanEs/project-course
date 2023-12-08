@@ -25,7 +25,7 @@ jobs:
             - name: linting css
               run: npm run lint:scss
             - name: testing unit
-              run: jest --config ./config/jest/jest.config.ts
+              run: npm run test:unit
             - name: build storybook
               run: npm run build-storybook
             - name: run regression tests
