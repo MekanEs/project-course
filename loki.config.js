@@ -11,6 +11,7 @@ module.exports = {
             height: 768,
             deviceScaleFactor: 1,
             mobile: false,
+            preset: 'Retina Macbook Pro 15',
         },
         'chrome.iphone7': {
             target: 'chrome.app',
