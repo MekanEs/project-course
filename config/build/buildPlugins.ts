@@ -9,23 +9,23 @@ export function buildPlugin(
     paths: BuildPaths,
     isDev: boolean
 ): webpack.WebpackPluginInstance[] {
-    return [
-        new HtmlWebpackPlugin({
-            template: paths.html,
-        }),
 
-        new webpack.ProgressPlugin(),
+    const plugins = [ new HtmlWebpackPlugin({
+        template: paths.html,
+    }),
 
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenhash].css',
-            chunkFilename: '[id].[contenthash].css',
-        }),
+    new webpack.ProgressPlugin(),
 
-        new webpack.DefinePlugin({
-            _IS_DEV_: JSON.stringify(isDev),
-        }),
-        new BundleAnalyzerPlugin({ openAnalyzer: false }),
-        isDev && new webpack.HotModuleReplacementPlugin(),
-        isDev && new ReactRefreshWebpackPlugin(),
-    ].filter(Boolean);
+    new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenhash].css',
+        chunkFilename: '[id].[contenthash].css',
+    }),
+
+    new webpack.DefinePlugin({
+        _IS_DEV_: JSON.stringify(isDev),
+    }),
+    isDev&&new BundleAnalyzerPlugin({ openAnalyzer: false }),
+    isDev && new webpack.HotModuleReplacementPlugin(),
+    isDev && new ReactRefreshWebpackPlugin(),]
+    return plugins.filter(Boolean);
 }
