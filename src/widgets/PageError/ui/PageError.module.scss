@@ -1,7 +1,7 @@
 @import '../../../app/styles/variables/mixins';
 
 .PageError {
-    @include Centered;
+    @include centered-block;
 
     gap: 20px;
 }
