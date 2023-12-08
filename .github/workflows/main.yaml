@@ -26,8 +26,8 @@ jobs:
               run: npm run lint:scss
             - name: testing unit
               run: npm run test:unit
-            - name: build storybook
-              run: npm run build-storybook
+            # - name: build storybook
+            #   run: npm run build-storybook
             - name: run regression tests
               run: npm run test:loki:ci
             - name: Archive screenshots
