@@ -5,9 +5,10 @@ import { Button } from 'shared/ui';
 import { useTranslation } from 'react-i18next';
 interface LangTogglerProps {
     className?: string;
+    short: boolean;
 }
 
-export const LangToggler: FC<LangTogglerProps> = ({ className }) => {
+export const LangToggler: FC<LangTogglerProps> = ({ className, short }) => {
     const { t, i18n } = useTranslation();
     const onToggle = async (): Promise<void> => {
         i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
@@ -21,7 +22,7 @@ export const LangToggler: FC<LangTogglerProps> = ({ className }) => {
             }}
             className={classNames(styles.LangToggler, {}, [className])}
         >
-            {t('Lang')}
+            {short ? t('Lang_short') : t('Lang')}
         </Button>
     );
 };

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { AppLink, AppLinkTheme } from './AppLink';
-import { RouterDecorator } from 'shared/config/storybook/RouterDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/StyleDecorator';
 import { Theme } from 'app/providers/themeProvider';
 
@@ -34,8 +33,6 @@ export const AccentAppLink: Story = {
 export const AccentAppLinkDark: Story = {
     args: { children: 'Link', theme: AppLinkTheme.ACCENT },
 };
-LightAppLink.decorators = [RouterDecorator];
-LightAppLinkDark.decorators = [RouterDecorator, ThemeDecorator(Theme.DARK)];
+LightAppLinkDark.decorators = [ThemeDecorator(Theme.DARK)];
 
-AccentAppLink.decorators = [RouterDecorator];
-AccentAppLinkDark.decorators = [RouterDecorator, ThemeDecorator(Theme.DARK)];
+AccentAppLinkDark.decorators = [ThemeDecorator(Theme.DARK)];

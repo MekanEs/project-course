@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/StyleDecorator';
 import { Theme } from 'app/providers/themeProvider';
 import { Navbar } from './Navbar';
-import { RouterDecorator } from 'shared/config/storybook/RouterDecorator';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -23,5 +22,4 @@ export const LightNavbar: Story = {
 export const DarkNavbar: Story = {
     args: {},
 };
-DarkNavbar.decorators = [ThemeDecorator(Theme.DARK), RouterDecorator];
-LightNavbar.decorators = [RouterDecorator];
+DarkNavbar.decorators = [ThemeDecorator(Theme.DARK)];

@@ -1,12 +1,14 @@
 import { type FC, useState } from 'react';
 import { classNames } from 'shared/lib';
 import styles from './SideBar.module.scss';
-import { Button } from 'shared/ui';
-import { ButtonTheme } from 'shared/ui/Button/Button';
+import { AppLink, Button } from 'shared/ui';
+import { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { ThemeToggler } from 'widgets/ThemeToggler';
 import { LangToggler } from 'widgets/LangToggler/ui/LangToggler';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useTranslation } from 'react-i18next';
-
+import AboutIcon from 'shared/assets/icons/about.svg';
+import HomeIcon from 'shared/assets/icons/home.svg';
 interface SideBarProps {
     className?: string;
 }
@@ -14,6 +16,7 @@ interface SideBarProps {
 export const SideBar: FC<SideBarProps> = ({ className }) => {
     const [collapsed, setCollapsed] = useState<boolean>(true);
     const { t } = useTranslation();
+
     const onToggle: () => void = () => {
         setCollapsed((prev) => !prev);
     };
@@ -26,20 +29,38 @@ export const SideBar: FC<SideBarProps> = ({ className }) => {
                 [className]
             )}
         >
+            <div className={classNames(styles.items)}>
+                <AppLink
+                    className={classNames(styles.item)}
+                    to={RoutePath.main}
+                >
+                    <HomeIcon className={styles.icon} />
+                    <span className={classNames(styles.link)}>{t('Main')}</span>
+                </AppLink>
+                <AppLink
+                    className={classNames(styles.item)}
+                    to={RoutePath.about}
+                >
+                    <AboutIcon className={styles.icon} />
+                    <span className={classNames(styles.link)}>
+                        {t('About')}
+                    </span>
+                </AppLink>
+            </div>
+
             <Button
+                className={styles.collapseBtn}
                 data-testid="sidebar-toggle"
-                theme={ButtonTheme.OUTLINED_PRIMARY}
+                theme={ButtonTheme.BACKGROUND_ACCENT}
+                square={true}
+                size={ButtonSize.L}
                 onClick={onToggle}
             >
-                {collapsed ? t('open') : t('close')}
+                {collapsed ? '>' : '<'}
             </Button>
-            <div
-                className={classNames(styles.switchers, {
-                    [styles.colomned]: collapsed,
-                })}
-            >
+            <div className={classNames(styles.switchers)}>
                 <ThemeToggler />
-                <LangToggler />
+                <LangToggler short={collapsed} />
             </div>
         </div>
     );

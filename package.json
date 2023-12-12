@@ -16,7 +16,10 @@
         "test:loki:ci": "loki --requireReference --reactUri file:./storybook-static",
         "test:loki:approve": "loki approve",
         "storybook": "storybook dev -p 6006 -c ./config/storybook",
-        "build-storybook": "storybook build -c ./config/storybook"
+        "build-storybook": "storybook build -c ./config/storybook",
+        "visual:report": "npm run visual:report:json && npm run visual:report:html",
+        "visual:report:json": "node scripts/generate-visual-json-report.js",
+        "visual:report:html": "reg-cli --from .loki/report.json --report .loki/report.html"
     },
     "keywords": [],
     "author": "",
@@ -71,6 +74,7 @@
         "prettier": "^3.1.0",
         "react-refresh": "^0.14.0",
         "react-testing-library": "^8.0.1",
+        "reg-cli": "^0.17.7",
         "regenerator-runtime": "^0.14.0",
         "sass": "^1.69.5",
         "sass-loader": "^13.3.2",

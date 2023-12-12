@@ -4,6 +4,8 @@
     cursor: pointer;
     color: inherit;
     font: var(--font-m);
+    padding: 6px 12px;
+    border: none;
 }
 
 .clear {
@@ -14,7 +16,6 @@
 }
 
 .outlined_primary {
-    padding: 5px;
     border-radius: 10px;
     border: 1px solid #000;
     background-color: var(--bg-color);
@@ -26,4 +27,49 @@
     border: 1px solid #000;
     background-color: var(--secondary-color);
     color: var(--bg-color);
+}
+
+.background_secondary {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+}
+
+.background_accent {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.background {
+    background-color: var(--bg-color);
+}
+
+.square {
+    padding: 0;
+}
+
+.square.size_m {
+    width: var(--font-line-m);
+    height: var(--font-line-m);
+}
+
+.square.size_l {
+    width: var(--font-line-l);
+    height: var(--font-line-l);
+}
+
+.square.size_xl {
+    width: var(--font-line-xl);
+    height: var(--font-line-xl);
+}
+
+.size_m {
+    font: var(--font-m);
+}
+
+.size_l {
+    font: var(--font-l);
+}
+
+.size_xl {
+    font: var(--font-xl);
 }

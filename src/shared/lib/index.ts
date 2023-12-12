@@ -1,3 +1,4 @@
 import { classNames } from './classNames/classNames';
-import { renderWithTranslation } from './renderWithTranslation/renderWithTranslation';
-export { classNames, renderWithTranslation };
+import { ComponentRender } from './tests/componentRender/ComponentRender';
+
+export { classNames, ComponentRender };
