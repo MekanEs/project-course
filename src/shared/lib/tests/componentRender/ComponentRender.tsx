@@ -8,7 +8,11 @@ export interface RenderOptions {
     route?: string;
 }
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function ComponentRender(children: ReactNode, options?: RenderOptions) {
+export function ComponentRender(
+    children: ReactNode,
+
+    options: RenderOptions = {}
+) {
     const { route = '/' } = options;
     return render(
         <MemoryRouter initialEntries={[route]}>
