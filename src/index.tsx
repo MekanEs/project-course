@@ -5,6 +5,7 @@ import App from 'app/App';
 import { ThemeProvider } from 'app/providers/themeProvider';
 import ErrorBoundary from 'app/providers/errorBoundary/ui/ErrorBoundary';
 
+import 'app/styles/index.scss';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>

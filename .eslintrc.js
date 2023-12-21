@@ -11,6 +11,7 @@ module.exports = {
         'standard-with-typescript',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
+
         'prettier',
     ],
     parserOptions: {
@@ -27,6 +28,7 @@ module.exports = {
             { extensions: ['js', 'jsx', 'tsx'] },
         ],
         'react/react-in-jsx-scope': 'off',
+        'max-len': '80',
         'import/no-unresolved': 'off',
         '@typescript-eslint/no-explicit-any': 'error',
         'comma-dangle': 'off',
@@ -35,6 +37,8 @@ module.exports = {
         '@typescript-eslint/strict-boolean-expressions': 0,
         '@typescript-eslint/prefer-nullish-coalescing': 0,
         '@typescript-eslint/no-floating-promises': 0,
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error',
         'i18next/no-literal-string': [
             2,
             { markupOnly: true, ignoreAttribute: ['data-testid'] },
@@ -42,7 +46,7 @@ module.exports = {
     },
     overrides: [
         {
-            files: ['**/src/**/*.test.{ts,tsx}'],
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 0,
             },
