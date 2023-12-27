@@ -28,7 +28,6 @@ module.exports = {
             { extensions: ['js', 'jsx', 'tsx'] },
         ],
         'react/react-in-jsx-scope': 'off',
-        'max-len': '80',
         'import/no-unresolved': 'off',
         '@typescript-eslint/no-explicit-any': 'error',
         'comma-dangle': 'off',
