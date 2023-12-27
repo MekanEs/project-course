@@ -13,6 +13,17 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
             },
         },
     };
+    // TODO: How to get faster build
+    // const swcLoader = {
+    //     test: /\.(js|jsx|tsx)$/,
+    //     exclude: /(node_modules)/,
+    //     use: {
+    //         loader: 'swc-loader',
+    //         options: {
+    //             parseMap: true,
+    //         },
+    //     },
+    // };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif)$/i,
