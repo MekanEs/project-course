@@ -1,7 +1,5 @@
 import { type FC, Suspense } from 'react';
 
-import { useTheme } from './providers/themeProvider';
-
 import { classNames } from 'shared/lib';
 import { AppRouter } from './providers/router';
 
@@ -10,11 +8,9 @@ import { SideBar } from 'widgets/SideBar';
 import 'shared/config/i18n/i18n';
 
 const App: FC = () => {
-    const { theme } = useTheme();
-
     return (
         <Suspense fallback={'Loading...'}>
-            <div className={classNames('app', {}, [theme])}>
+            <div className={classNames('app', {}, [])}>
                 <Navbar />
 
                 <div className="content-block">

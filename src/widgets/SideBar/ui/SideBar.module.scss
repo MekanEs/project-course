@@ -20,7 +20,6 @@
     width: 30px;
     stroke: var(--primary-color);
     height: fit-content;
-    transition: all 0.3s ease;
 }
 
 .item {
@@ -28,18 +27,15 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    transition: opacity 0.3s ease;
 
     &:hover {
-        color: var(--secondary-color);
-
-        .icon {
-            stroke: var(--secondary-color);
-        }
+        opacity: 0.7;
     }
 }
 
 .link {
-    transition: all 0.3s ease;
+    display: block;
 }
 
 .switchers {
@@ -60,7 +56,6 @@
     }
 
     .link {
-        opacity: 0;
         display: none;
     }
 }

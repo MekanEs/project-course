@@ -2,7 +2,6 @@ import { type ReactNode, type FC, useEffect, useCallback } from 'react';
 import { classNames } from 'shared/lib';
 import styles from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
-import { useTheme } from 'app/providers/themeProvider';
 
 interface ModalProps {
     className?: string;
@@ -17,7 +16,6 @@ export const Modal: FC<ModalProps> = ({
     isOpened,
     closeModal,
 }) => {
-    const { theme } = useTheme();
     const stopPropagation: React.MouseEventHandler<HTMLDivElement> = (e) => {
         e.stopPropagation();
     };
@@ -39,7 +37,7 @@ export const Modal: FC<ModalProps> = ({
         };
     }, [isOpened, onKeyDown]);
     return (
-        <Portal theme={theme}>
+        <Portal>
             <div
                 className={classNames(
                     styles.Modal,
