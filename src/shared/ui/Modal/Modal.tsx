@@ -1,4 +1,4 @@
-import { type ReactNode, type FC, useEffect, useCallback } from 'react';
+import { type ReactNode, useEffect, useCallback, memo, useState } from 'react';
 import { classNames } from 'shared/lib';
 import styles from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
@@ -8,59 +8,75 @@ interface ModalProps {
     children: ReactNode;
     isOpened: boolean;
     closeModal: () => void;
+    lazy?: boolean;
 }
 
-export const Modal: FC<ModalProps> = ({
-    className,
-    children,
-    isOpened,
-    closeModal,
-}) => {
-    const stopPropagation: React.MouseEventHandler<HTMLDivElement> = (e) => {
-        e.stopPropagation();
-    };
-    const onKeyDown = useCallback(
-        (e: KeyboardEventInit): void => {
-            if (e.key === 'Escape') {
-                closeModal();
+// eslint-disable-next-line react/display-name
+export const Modal = memo(
+    (props: ModalProps) => {
+        const { className, children, isOpened, closeModal, lazy } = props;
+        const [isMounted, setIsMounted] = useState(false);
+        useEffect(() => {
+            if (isOpened) {
+                setIsMounted(true);
             }
-        },
-        [closeModal]
-    );
-    useEffect(() => {
-        if (isOpened) {
-            window.addEventListener('keydown', onKeyDown);
-        }
-        return () => {
-            console.log('unmount');
-            window.removeEventListener('keydown', onKeyDown);
+        }, [isOpened]);
+        const stopPropagation: React.MouseEventHandler<HTMLDivElement> = (
+            e
+        ) => {
+            e.stopPropagation();
         };
-    }, [isOpened, onKeyDown]);
-    return (
-        <Portal>
-            <div
-                className={classNames(
-                    styles.Modal,
-                    { [styles.opened]: isOpened },
-                    [className]
-                )}
-            >
+        const onKeyDown = useCallback(
+            (e: KeyboardEventInit): void => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            },
+            [closeModal]
+        );
+        useEffect(() => {
+            if (isOpened) {
+                window.addEventListener('keydown', onKeyDown);
+            }
+            return () => {
+                window.removeEventListener('keydown', onKeyDown);
+            };
+        }, [isOpened, onKeyDown]);
+
+        if (!isMounted && lazy) {
+            return null;
+        }
+        return (
+            <Portal>
                 <div
-                    className={classNames(styles.overlay)}
-                    onClick={() => {
-                        closeModal();
-                    }}
+                    className={classNames(
+                        styles.Modal,
+                        { [styles.opened]: isOpened },
+                        [className]
+                    )}
                 >
                     <div
-                        className={classNames(styles.content, {
-                            [styles.showContent]: isOpened,
-                        })}
-                        onClick={stopPropagation}
+                        className={classNames(styles.overlay)}
+                        onClick={() => {
+                            closeModal();
+                        }}
                     >
-                        {children}
+                        <div
+                            className={classNames(styles.content, {
+                                [styles.showContent]: isOpened,
+                            })}
+                            onClick={stopPropagation}
+                        >
+                            {children}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </Portal>
-    );
-};
+            </Portal>
+        );
+    },
+    (prev, next) => {
+        return (
+            prev.isOpened === next.isOpened && prev.children === next.children
+        );
+    }
+);

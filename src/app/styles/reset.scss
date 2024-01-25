@@ -16,6 +16,13 @@ textarea {
     appearance: inherit;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition:
+        background-color 0s 600000s,
+        color 0s 600000s;
+}
+
 a {
     color: inherit;
     text-decoration: none;

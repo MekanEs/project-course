@@ -1,0 +1,6 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+input.Input,
+input.Input:-internal-autofill-selected {
+    color: inherit !important;
+    background-color: var(--bg-color) !important;
+}

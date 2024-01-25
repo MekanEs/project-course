@@ -1,0 +1,13 @@
+.Input {
+    color: inherit;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.errorMessage {
+    color: var(--error-color);
+}

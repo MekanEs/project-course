@@ -15,6 +15,7 @@ const App: FC = () => {
 
                 <div className="content-block">
                     <SideBar />
+
                     <AppRouter />
                 </div>
             </div>

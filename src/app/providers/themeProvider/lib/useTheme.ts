@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { LOCAL_STRORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
+
 export type UseThemeType = () => { theme: Theme; toggleTheme: () => void };
+
 export const useTheme: UseThemeType = () => {
     const { theme, setTheme } = useContext(ThemeContext);
     const toggleTheme = (): void => {
