@@ -5,3 +5,4 @@ webpack.config.ts
 loki.config.js
 scripts
 json-server
+.husky

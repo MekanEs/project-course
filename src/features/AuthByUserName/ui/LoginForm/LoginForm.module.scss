@@ -1,6 +1,19 @@
 .LoginForm {
     display: flex;
     flex-direction: column;
-    min-width: 350px;
+    min-width: 300px;
     gap: 20px;
+    align-items: flex-end;
+
+    * {
+        border-radius: 5px;
+    }
+
+    label {
+        width: 100%;
+    }
+}
+
+.loginBtn {
+    width: 40%;
 }

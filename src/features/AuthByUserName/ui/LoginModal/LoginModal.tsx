@@ -19,7 +19,7 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
             className={classNames(styles.LoginModal, {}, [className])}
             lazy
         >
-            <LoginForm />
+            <LoginForm closeModal={closeModal} />
         </Modal>
     );
 };

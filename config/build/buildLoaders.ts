@@ -3,16 +3,16 @@ import { buildCssLoaders } from './loaders/buildCssLoader';
 import { buildSVGLoader } from './loaders/buildSVGLoader';
 
 export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
-    // const babelLoader = {
-    //     test: /\.(js|jsx|tsx)$/,
-    //     exclude: /node_modules/,
-    //     use: {
-    //         loader: 'babel-loader',
-    //         options: {
-    //             presets: ['@babel/preset-env'],
-    //         },
-    //     },
-    // };
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+            },
+        },
+    };
     // TODO: How to get faster build
     const swcLoader = {
         test: /\.(js|jsx|tsx|ts)$/,
@@ -37,10 +37,11 @@ export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
 
     const cssLoader = buildCssLoaders(isDev);
 
-    // const typescriptLoader = {
-    //     test: /\.tsx?$/,
-    //     use: 'ts-loader',
-    //     exclude: /node_modules/,
-    // };
-    return [swcLoader, cssLoader, svgLoader, fileLoader];
+    const typescriptLoader = {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+    };
+    const transpiler = isDev ? [swcLoader] : [babelLoader, typescriptLoader];
+    return [...transpiler, cssLoader, svgLoader, fileLoader];
 }

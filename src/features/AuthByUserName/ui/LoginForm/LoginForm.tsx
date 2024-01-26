@@ -6,6 +6,7 @@ import { FormInput, FormInputWrapper } from 'shared/ui';
 
 interface LoginFormProps {
     className?: string;
+    closeModal?: () => void;
 }
 
 export interface FormValues {
@@ -13,7 +14,7 @@ export interface FormValues {
     password: string;
 }
 
-export const LoginForm: FC<LoginFormProps> = ({ className }) => {
+export const LoginForm: FC<LoginFormProps> = ({ className, closeModal }) => {
     const {
         register,
         reset,
@@ -23,6 +24,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
     const onSubmit = (data: FormValues): void => {
         console.log('handle', data);
         reset();
+        closeModal?.();
     };
     const registerFirstName = useCallback(
         (): ReturnType<UseFormRegister<FormValues>> => ({
@@ -60,6 +62,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
         >
             <FormInputWrapper error={errors.firstName} name="firstName">
                 <FormInput
+                    id="firstName"
                     type="text"
                     placeholder="First name"
                     register={registerFirstName}
@@ -68,13 +71,18 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
             <FormInputWrapper error={errors.password} name="password">
                 <FormInput
+                    id="password"
                     type="password"
                     placeholder="Password"
                     register={registerPassword}
                 />
             </FormInputWrapper>
 
-            <input disabled={!isValid} type="submit" />
+            <input
+                className={classNames(styles.loginBtn)}
+                disabled={!isValid}
+                type="submit"
+            />
         </form>
     );
 };
