@@ -1,4 +1,10 @@
 module.exports = {
+    name: 'my-project',
+    version: '1.0.0',
+    fileNameFormatter: ({ _, kind, story }) => {
+        const unique = Date.now();
+        return `${unique + story}`.toLowerCase();
+    },
     diffingEngine: 'pixelmatch',
     verboseRenderer: true,
     configurations: {
