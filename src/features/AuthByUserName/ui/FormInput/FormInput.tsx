@@ -11,12 +11,5 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const FormInput: FC<FormInputProps> = (props) => {
     const { className, register, ...otherProps } = props;
     const reg = register();
-    return (
-        <input
-            autoComplete="off"
-            className={classNames(styles.Input, {}, [className])}
-            {...otherProps}
-            {...reg}
-        />
-    );
+    return <input autoComplete="off" className={classNames(styles.Input, {}, [className])} {...reg} {...otherProps} />;
 };

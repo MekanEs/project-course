@@ -17,7 +17,7 @@
         "test:loki:ci": "loki --requireReference --reactUri file:./storybook-static",
         "test:loki:approve": "loki approve",
         "storybook": "storybook dev -p 6006 -c ./config/storybook",
-        "build-storybook": "storybook build -c ./config/storybook",
+        "build-storybook": "storybook build -c  ./config/storybook",
         "visual:report": "npm run visual:report:json && npm run visual:report:html",
         "visual:report:json": "node scripts/generate-visual-json-report.js",
         "visual:report:html": "reg-cli --from .loki/report.json --report .loki/report.html"
@@ -99,6 +99,7 @@
     },
     "dependencies": {
         "@reduxjs/toolkit": "^2.0.1",
+        "axios": "^1.6.7",
         "i18next": "^23.7.7",
         "i18next-browser-languagedetector": "^7.2.0",
         "i18next-http-backend": "^2.4.2",

@@ -1,8 +1,18 @@
-import { useCallback, type FC } from 'react';
+import { useCallback, type FC, useEffect } from 'react';
 import { type UseFormRegister, useForm } from 'react-hook-form';
 import { classNames } from 'shared/lib';
 import styles from './LoginForm.module.scss';
-import { FormInput, FormInputWrapper } from 'shared/ui';
+import { Loader, Text, Title } from 'shared/ui';
+import { useSelector } from 'react-redux';
+import { getLoginData } from '../../model/selectors/getLoginData';
+import { loginByUserName } from '../../model/services/loginByUserName';
+import { useAppDispatch } from 'app/providers/storeProvider/config/store';
+import { getUser } from 'entities/User/model/selectors/getUser';
+import { LoginActions } from 'features/AuthByUserName';
+import { useTranslation } from 'react-i18next';
+import { ThemeText } from 'shared/ui/Text/Text';
+import { FormInputWrapper } from '../FormInputWrapper/FormInputWrapper';
+import { FormInput } from '../FormInput/FormInput';
 
 interface LoginFormProps {
     className?: string;
@@ -10,79 +20,111 @@ interface LoginFormProps {
 }
 
 export interface FormValues {
-    firstName: string;
+    username: string;
     password: string;
 }
 
-export const LoginForm: FC<LoginFormProps> = ({ className, closeModal }) => {
+export const LoginForm: FC<LoginFormProps> = (props) => {
+    const { closeModal, className } = props;
+    const { fetchError, isLoading } = useSelector(getLoginData);
+    const user = useSelector(getUser);
+    const { t } = useTranslation();
+    const dispatch = useAppDispatch();
     const {
         register,
         reset,
         handleSubmit,
         formState: { errors, isValid },
     } = useForm<FormValues>({ mode: 'onChange' });
-    const onSubmit = (data: FormValues): void => {
-        console.log('handle', data);
+    const onSubmit = ({ username, password }: FormValues): void => {
         reset();
-        closeModal?.();
+        dispatch(loginByUserName({ username, password }));
     };
+
+    useEffect(() => {
+        if (user) {
+            closeModal();
+        }
+    }, [user, closeModal]);
+
     const registerFirstName = useCallback(
         (): ReturnType<UseFormRegister<FormValues>> => ({
-            ...register('firstName', {
+            ...register('username', {
                 required: {
                     value: true,
-                    message: 'обязательное поле ввода',
+                    message: t('required field'),
+                },
+                minLength: {
+                    value: 5,
+                    message: t('min5'),
                 },
             }),
         }),
-        [register]
+        [register, t]
     );
     const registerPassword = useCallback(
         (): ReturnType<UseFormRegister<FormValues>> => ({
             ...register('password', {
                 required: {
                     value: true,
-                    message: 'обязательное поле ввода',
+                    message: t('required field'),
                 },
 
                 minLength: {
                     value: 3,
-                    message: 'минимум 3 знака',
+                    message: t('min3'),
                 },
             }),
         }),
-        [register]
+        [register, t]
     );
+
     return (
         <form
+            data-testid="form"
+            autoComplete="off"
             onSubmit={(e) => {
                 handleSubmit(onSubmit)(e);
             }}
+            onChange={() => {
+                dispatch(LoginActions.setError(undefined));
+            }}
             className={classNames(styles.LoginForm, {}, [className])}
         >
-            <FormInputWrapper error={errors.firstName} name="firstName">
+            <Title title={t('login form')} />
+            <Text data-testid="fetchError" theme={ThemeText.ERROR}>
+                {fetchError ? t(fetchError) : null}
+            </Text>
+            <FormInputWrapper error={errors.username} name="firstName">
                 <FormInput
+                    data-testid="firstName input"
                     id="firstName"
                     type="text"
-                    placeholder="First name"
+                    placeholder={t('username')}
                     register={registerFirstName}
                 />
             </FormInputWrapper>
 
             <FormInputWrapper error={errors.password} name="password">
                 <FormInput
+                    data-testid="password input"
                     id="password"
                     type="password"
-                    placeholder="Password"
+                    placeholder={t('password')}
                     register={registerPassword}
                 />
             </FormInputWrapper>
 
-            <input
-                className={classNames(styles.loginBtn)}
-                disabled={!isValid}
-                type="submit"
-            />
+            {isLoading ? (
+                <Loader data-testid="loader" className={styles.loader} />
+            ) : (
+                <input
+                    data-testid="submit-btn"
+                    className={classNames(styles.loginBtn)}
+                    disabled={!isValid}
+                    type="submit"
+                />
+            )}
         </form>
     );
 };

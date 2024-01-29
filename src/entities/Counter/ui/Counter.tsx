@@ -1,13 +1,14 @@
 /* eslint-disable i18next/no-literal-string */
 import { type FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { CounterActions } from '../model/slice/counterSlice';
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { Button } from 'shared/ui';
 import { ButtonTheme } from 'shared/ui/Button/Button';
+import { useAppDispatch } from 'app/providers/storeProvider/config/store';
 
 export const Counter: FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const counterValue = useSelector(getCounterValue);
     const increment = (): void => {
         dispatch(CounterActions.increment());
@@ -18,18 +19,10 @@ export const Counter: FC = () => {
     return (
         <div>
             <h3 data-testid="value">{counterValue}</h3>
-            <Button
-                data-testid="increment"
-                theme={ButtonTheme.OUTLINED_PRIMARY}
-                onClick={increment}
-            >
+            <Button data-testid="increment" theme={ButtonTheme.OUTLINED_PRIMARY} onClick={increment}>
                 increment
             </Button>
-            <Button
-                data-testid="decrement"
-                theme={ButtonTheme.OUTLINED_PRIMARY}
-                onClick={decrement}
-            >
+            <Button data-testid="decrement" theme={ButtonTheme.OUTLINED_PRIMARY} onClick={decrement}>
                 decrement
             </Button>
         </div>

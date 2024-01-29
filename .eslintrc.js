@@ -1,4 +1,11 @@
 module.exports = {
+    settings: {
+        react: {
+            createClass: 'createReactClass',
+            fragment: 'Fragment',
+            version: 'detect',
+        },
+    },
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint', 'react', 'i18next'],
     env: {
@@ -7,13 +14,7 @@ module.exports = {
         node: true,
         jest: true,
     },
-    extends: [
-        'standard-with-typescript',
-        'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
-
-        'prettier',
-    ],
+    extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:react-hooks/recommended', 'prettier'],
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -23,10 +24,7 @@ module.exports = {
     rules: {
         'react/jsx-indent': [2, 4],
         'react/jsx-uses-react': 'off',
-        'react/jsx-filename-extension': [
-            2,
-            { extensions: ['js', 'jsx', 'tsx'] },
-        ],
+        'react/jsx-filename-extension': [2, { extensions: ['js', 'jsx', 'tsx'] }],
         'react/react-in-jsx-scope': 'off',
         'import/no-unresolved': 'off',
         '@typescript-eslint/no-explicit-any': 'error',
@@ -38,10 +36,8 @@ module.exports = {
         '@typescript-eslint/no-floating-promises': 0,
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
-        'i18next/no-literal-string': [
-            2,
-            { markupOnly: true, ignoreAttribute: ['data-testid'] },
-        ],
+        'react/display-name': 'off',
+        'i18next/no-literal-string': [2, { markupOnly: true, ignoreAttribute: ['data-testid'] }],
     },
     overrides: [
         {

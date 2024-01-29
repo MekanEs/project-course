@@ -7,7 +7,6 @@ describe('Sidebar', () => {
         const id = 'sidebar';
         ComponentRender(<SideBar />);
         expect(screen.getByTestId(id)).toBeInTheDocument();
-        screen.debug();
     });
     it('toggle on click', () => {
         const id = 'sidebar';
@@ -21,4 +20,5 @@ describe('Sidebar', () => {
         fireEvent.click(toggleBtn);
         expect(screen.getByTestId(id)).not.toHaveClass('collapsed');
     });
+    screen.debug();
 });

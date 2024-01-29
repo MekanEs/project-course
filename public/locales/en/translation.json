@@ -9,5 +9,13 @@
     "Reload page": "Reload page",
     "open": "open",
     "close": "close",
-    "Sign in": "Sign in"
+    "Sign in": "Sign in",
+    "Sign out": "Sign out",
+    "fetchError": "Wrong username or password",
+    "required field": "Required field",
+    "min3": "minimum 3 symbols",
+    "min5": "minimum 5 symbols",
+    "login form": "Login form",
+    "password": "password",
+    "username": "username"
 }
