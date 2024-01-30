@@ -33,9 +33,9 @@ jobs:
             - name: build storybook
               run: npm run build-storybook
               if: always()
-            # - name: run regression tests
-            #   run: npm run test:loki:ci
-            #   if: always()
+            - name: run regression tests
+              run: npm run test:loki:ci
+              if: always()
             - name: Archive screenshots
               if: ${{ failure() }}
               uses: actions/upload-artifact@v1
