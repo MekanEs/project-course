@@ -1,9 +1,7 @@
 module.exports = {
     name: 'my-project',
     version: '1.0.0',
-    fileNameFormatter: ({ _, kind, story }) => {
-        return `${kind}${story}`.toLowerCase();
-    },
+
     diffingEngine: 'pixelmatch',
     verboseRenderer: true,
     configurations: {
