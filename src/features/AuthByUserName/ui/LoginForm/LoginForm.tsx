@@ -123,6 +123,7 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
                     className={classNames(styles.loginBtn)}
                     disabled={!isValid}
                     type="submit"
+                    value={t('Submit')}
                 />
             )}
         </form>
