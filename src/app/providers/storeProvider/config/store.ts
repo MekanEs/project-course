@@ -1,24 +1,27 @@
 import { type ReducersMapObject, configureStore, type ThunkDispatch, type UnknownAction } from '@reduxjs/toolkit';
-import { type StateSchema } from './StateSchema';
+import { type ReduxStoreWithManager, type StateSchema } from './StateSchema';
 import { CounterReducer } from 'entities/Counter';
 import { UserReducer } from 'entities/User';
-import { LoginReducer } from 'features/AuthByUserName';
 import { useDispatch } from 'react-redux';
+import { createReducerManager } from './createReducerManager';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore(initialState: StateSchema) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         counter: CounterReducer,
         user: UserReducer,
-        login: LoginReducer,
     };
-    const store = configureStore<StateSchema>({
-        reducer: rootReducer,
+    const reducerManager = createReducerManager(rootReducer);
+    const store: ReduxStoreWithManager = configureStore<StateSchema>({
+        reducer: reducerManager.reduce,
         devTools: _IS_DEV_,
         preloadedState: initialState,
     });
+
+    store.reducerManager = reducerManager;
     return store;
 }
+
 export type RootState = ReducersMapObject<StateSchema>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AppThunkDispatch = ThunkDispatch<RootState, any, UnknownAction>;

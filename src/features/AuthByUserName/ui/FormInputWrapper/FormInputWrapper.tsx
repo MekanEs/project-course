@@ -14,7 +14,6 @@ interface FormInputProps {
 
 export const FormInputWrapper: FC<FormInputProps> = (props) => {
     const { className, name, error, children } = props;
-    console.log(error);
 
     return (
         <label className={classNames(styles.label, {}, [className])} htmlFor={name}>

@@ -34,6 +34,8 @@ module.exports = {
         '@typescript-eslint/strict-boolean-expressions': 0,
         '@typescript-eslint/prefer-nullish-coalescing': 0,
         '@typescript-eslint/no-floating-promises': 0,
+        '@typescript-eslint/explicit-function-return-type': 0,
+        '@typescript-eslint/no-dynamic-delete': 0,
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'react/display-name': 'off',
