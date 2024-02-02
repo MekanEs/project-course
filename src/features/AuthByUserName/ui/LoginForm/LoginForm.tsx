@@ -1,4 +1,4 @@
-import { useCallback, type FC, useEffect } from 'react';
+import { useCallback, type FC, useEffect, memo } from 'react';
 import { type UseFormRegister, useForm } from 'react-hook-form';
 import { classNames } from 'shared/lib';
 import styles from './LoginForm.module.scss';
@@ -23,8 +23,7 @@ export interface FormValues {
     username: string;
     password: string;
 }
-
-export const LoginForm: FC<LoginFormProps> = (props) => {
+const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
     const { closeModal, className } = props;
     const { fetchError, isLoading } = useSelector(getLoginData);
     const user = useSelector(getUser);
@@ -128,4 +127,6 @@ export const LoginForm: FC<LoginFormProps> = (props) => {
             )}
         </form>
     );
-};
+});
+
+export default LoginForm;

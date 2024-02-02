@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/StyleDecorator';
 import { Theme } from 'app/providers/themeProvider';
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
+import { StoreDecorator } from 'shared/config/storybook';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -21,7 +22,12 @@ export const LoginFormDefault: Story = {
     args: { closeModal: () => {} },
 };
 
+export const LoginFormPending: Story = {
+    args: { closeModal: () => {} },
+};
+
 export const LoginFormDark: Story = {
     args: { closeModal: () => {} },
 };
 LoginFormDark.decorators = [ThemeDecorator(Theme.DARK)];
+LoginFormPending.decorators = [StoreDecorator({ login: { isLoading: true } })];

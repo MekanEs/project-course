@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { ComponentRender } from 'shared/lib';
 import { Counter } from './Counter';
 import { type StateSchema } from 'app/providers/storeProvider';
+import { ComponentRender } from 'shared/lib/tests';
 
 describe('Counter', () => {
     let initialState: Partial<StateSchema>;

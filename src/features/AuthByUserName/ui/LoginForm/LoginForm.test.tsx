@@ -1,7 +1,7 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 
-import { ComponentRender } from 'shared/lib';
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
+import { ComponentRender } from 'shared/lib/tests';
 describe('Sidebar', () => {
     const btn = 'submit-btn';
     const form = 'form';
