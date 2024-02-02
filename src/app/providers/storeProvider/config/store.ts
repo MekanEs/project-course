@@ -6,8 +6,9 @@ import { useDispatch } from 'react-redux';
 import { createReducerManager } from './createReducerManager';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function createReduxStore(initialState: StateSchema) {
+export function createReduxStore(initialState: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
         counter: CounterReducer,
         user: UserReducer,
     };

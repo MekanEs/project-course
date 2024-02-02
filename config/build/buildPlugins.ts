@@ -21,11 +21,14 @@ export function buildPlugin(paths: BuildPaths, isDev: boolean): webpack.WebpackP
         new webpack.DefinePlugin({
             _IS_DEV_: JSON.stringify(isDev),
         }),
-        new BundleAnalyzerPlugin({ openAnalyzer: false }),
     ];
 
     if (isDev) {
-        plugins.push(new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin());
+        plugins.push(
+            new webpack.HotModuleReplacementPlugin(),
+            new ReactRefreshWebpackPlugin(),
+            new BundleAnalyzerPlugin({ openAnalyzer: false })
+        );
     }
     return plugins.filter(Boolean);
 }

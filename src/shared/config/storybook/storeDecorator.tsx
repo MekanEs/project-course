@@ -1,10 +1,17 @@
+import { type ReducersMapObject } from '@reduxjs/toolkit';
 import { type Decorator } from '@storybook/react';
-import { type StateSchema } from 'app/providers/storeProvider';
-import { createReduxStore } from 'app/providers/storeProvider/config/store';
-import { Provider } from 'react-redux';
+import { StoreProvider, type StateSchema } from 'app/providers/storeProvider';
+import { LoginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
 
-export const StoreDecorator: (initialState?: Partial<StateSchema>) => Decorator<Record<string, unknown>> =
-    (initialState?: StateSchema) => (Story) => {
+const defaultAsyncReducers: Partial<ReducersMapObject<StateSchema>> = {
+    login: LoginReducer,
+};
+
+export const StoreDecorator: (
+    initialState?: Partial<StateSchema>,
+    asyncReducer?: Partial<ReducersMapObject<StateSchema>>
+) => Decorator<Record<string, unknown>> =
+    (initialState?: StateSchema, asyncReducer?: Partial<ReducersMapObject<StateSchema>>) => (Story) => {
         if (!initialState) {
             initialState = {
                 counter: { value: 10 },
@@ -12,10 +19,9 @@ export const StoreDecorator: (initialState?: Partial<StateSchema>) => Decorator<
                 user: { Auth: undefined },
             };
         }
-        const store = createReduxStore(initialState);
         return (
-            <Provider store={store}>
+            <StoreProvider initialState={initialState} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducer }}>
                 <Story />
-            </Provider>
+            </StoreProvider>
         );
     };

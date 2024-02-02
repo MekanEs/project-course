@@ -25,9 +25,13 @@ export const LoginFormDefault: Story = {
 export const LoginFormPending: Story = {
     args: { closeModal: () => {} },
 };
+export const LoginFormError: Story = {
+    args: { closeModal: () => {} },
+};
 
 export const LoginFormDark: Story = {
     args: { closeModal: () => {} },
 };
 LoginFormDark.decorators = [ThemeDecorator(Theme.DARK)];
 LoginFormPending.decorators = [StoreDecorator({ login: { isLoading: true } })];
+LoginFormError.decorators = [StoreDecorator({ login: { isLoading: false, fetchError: 'error' } })];
