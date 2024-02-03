@@ -14,6 +14,8 @@ describe('getLoginData', () => {
     });
     it('work with empty state', () => {
         const state: Partial<StateSchema> = {};
-        expect(getLoginData(state as StateSchema)).toEqual(false);
+        expect(getLoginData(state as StateSchema)).toEqual({
+            isLoading: false,
+        });
     });
 });
