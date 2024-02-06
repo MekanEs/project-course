@@ -1,6 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 
-import { useState, type FC, useCallback } from 'react';
+import { useState, useCallback, memo } from 'react';
 
 import { Button } from 'shared/ui';
 
@@ -13,13 +13,13 @@ import { useSelector } from 'react-redux';
 import { getUser } from 'entities/User/model/selectors/getUser';
 import { UserActions } from 'entities/User';
 import { LoginModal } from 'features/AuthByUserName';
-import { useAppDispatch } from 'app/providers/storeProvider';
+import { useAppDispatch } from 'shared/lib/hooks';
 
 interface NavbarProps {
     className?: string;
 }
 
-export const Navbar: FC<NavbarProps> = ({ className }) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
     const [isAuthMdl, setIsAuthMdl] = useState<boolean>(false);
     const userAuth = useSelector(getUser);
     const dispatch = useAppDispatch();
@@ -48,4 +48,4 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
             {isAuthMdl && <LoginModal isOpened={isAuthMdl} closeModal={closeModal} />}
         </div>
     );
-};
+});

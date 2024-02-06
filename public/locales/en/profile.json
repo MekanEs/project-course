@@ -1,0 +1,6 @@
+{
+    "edit": "Edit",
+    "Profile": "Profile",
+    "error": "Error occured while fetching profile",
+    "AUTH ERROR": "Autharization error, sign in"
+}

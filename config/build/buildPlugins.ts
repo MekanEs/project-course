@@ -1,11 +1,12 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
-import { type BuildPaths } from '../types/config';
+import { type BuildOptions, type BuildPaths } from '../types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
-export function buildPlugin(paths: BuildPaths, isDev: boolean): webpack.WebpackPluginInstance[] {
+export function buildPlugin(paths: BuildPaths, options: BuildOptions): webpack.WebpackPluginInstance[] {
+    const { isDev, apiURL } = options;
     const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
@@ -20,6 +21,7 @@ export function buildPlugin(paths: BuildPaths, isDev: boolean): webpack.WebpackP
 
         new webpack.DefinePlugin({
             _IS_DEV_: JSON.stringify(isDev),
+            _API_URL_: JSON.stringify(apiURL),
         }),
     ];
 

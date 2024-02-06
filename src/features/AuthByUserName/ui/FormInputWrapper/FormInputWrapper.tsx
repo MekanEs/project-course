@@ -8,7 +8,7 @@ import { ThemeText } from 'shared/ui/Text/Text';
 interface FormInputProps {
     className?: string;
     name: string;
-    error: FieldError;
+    error: FieldError | undefined;
     children: ReactNode;
 }
 

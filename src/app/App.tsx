@@ -8,8 +8,8 @@ import { SideBar } from 'widgets/SideBar';
 import 'shared/config/i18n/i18n';
 
 import { LOCALSTORAGE_USER_KEY } from 'shared/const/localStorage';
-import { useAppDispatch } from './providers/storeProvider/config/store';
 import { UserActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks';
 
 const App: FC = () => {
     const dispatch = useAppDispatch();

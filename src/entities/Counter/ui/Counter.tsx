@@ -5,7 +5,7 @@ import { CounterActions } from '../model/slice/counterSlice';
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { Button } from 'shared/ui';
 import { ButtonTheme } from 'shared/ui/Button/Button';
-import { useAppDispatch } from 'app/providers/storeProvider/config/store';
+import { useAppDispatch } from 'shared/lib/hooks';
 
 export const Counter: FC = () => {
     const dispatch = useAppDispatch();

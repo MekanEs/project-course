@@ -4,7 +4,7 @@ import { type StateSchema } from 'app/providers/storeProvider';
 import { ComponentRender } from 'shared/lib/tests';
 
 describe('Counter', () => {
-    let initialState: Partial<StateSchema>;
+    let initialState: DeepPartial<StateSchema>;
     beforeEach(() => {
         initialState = {
             counter: { value: 10 },

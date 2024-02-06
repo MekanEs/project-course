@@ -16,28 +16,6 @@
     align-items: flex-start;
 }
 
-.icon {
-    width: 30px;
-    stroke: var(--primary-color);
-    height: fit-content;
-}
-
-.item {
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: opacity 0.3s ease;
-
-    &:hover {
-        opacity: 0.7;
-    }
-}
-
-.link {
-    display: block;
-}
-
 .switchers {
     position: absolute;
     bottom: 20px;
@@ -53,10 +31,6 @@
     .switchers {
         flex-direction: column;
         align-items: center;
-    }
-
-    .link {
-        display: none;
     }
 }
 

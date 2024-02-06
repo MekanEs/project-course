@@ -3,7 +3,7 @@ import { getLoginData } from './getLoginData';
 
 describe('getLoginData', () => {
     it('return loginData', () => {
-        const state: Partial<StateSchema> = {
+        const state: DeepPartial<StateSchema> = {
             login: {
                 isLoading: false,
             },
@@ -13,7 +13,7 @@ describe('getLoginData', () => {
         });
     });
     it('work with empty state', () => {
-        const state: Partial<StateSchema> = {};
+        const state: DeepPartial<StateSchema> = {};
         expect(getLoginData(state as StateSchema)).toEqual({
             isLoading: false,
         });

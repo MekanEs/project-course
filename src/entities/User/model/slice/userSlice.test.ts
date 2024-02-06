@@ -2,7 +2,7 @@ import { type UserSchema } from '../types/UserSchema';
 import { UserActions, UserReducer } from './userSlice';
 
 describe('userSlice.test', () => {
-    let state: Partial<UserSchema> = { Auth: undefined };
+    let state: DeepPartial<UserSchema> = { Auth: undefined };
 
     beforeEach(() => {
         state = { Auth: { id: '2', username: 'testName' } };

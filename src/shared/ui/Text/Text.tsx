@@ -1,4 +1,4 @@
-import type { HtmlHTMLAttributes, FC, ReactNode } from 'react';
+import { type HtmlHTMLAttributes, type FC, type ReactNode, memo } from 'react';
 import { classNames } from 'shared/lib';
 import styles from './Text.module.scss';
 export enum ThemeText {
@@ -13,10 +13,11 @@ interface TextProps extends HtmlHTMLAttributes<HTMLElement> {
     theme?: ThemeText;
 }
 
-export const Text: FC<TextProps> = ({ className, children, theme = ThemeText.DEFAULT, ...other }) => {
+export const Text: FC<TextProps> = memo((props: TextProps) => {
+    const { className, children, theme = ThemeText.DEFAULT, ...other } = props;
     return (
         <p {...other} className={classNames(styles.Text, {}, [className, styles[theme]])}>
             {children}
         </p>
     );
-};
+});

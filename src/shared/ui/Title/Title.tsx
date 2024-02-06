@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { memo, type FC } from 'react';
 import { classNames } from 'shared/lib';
 import styles from './Title.module.scss';
 
@@ -13,6 +13,7 @@ interface TitleProps {
     theme?: ThemeTitle;
 }
 
-export const Title: FC<TitleProps> = ({ className, title, theme = ThemeTitle.BLOCK }) => {
+export const Title: FC<TitleProps> = memo((props: TitleProps) => {
+    const { className, title, theme = ThemeTitle.BLOCK } = props;
     return <h6 className={classNames(styles.Title, {}, [className, styles[theme]])}>{title}</h6>;
-};
+});

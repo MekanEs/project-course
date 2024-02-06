@@ -13,7 +13,7 @@ const preview: Preview = {
             },
         },
     },
-    decorators: [ThemeDecorator(Theme.LIGHT), RouterDecorator(), StoreDecorator(), TranslationDecorator()],
+    decorators: [ThemeDecorator(Theme.LIGHT), StoreDecorator(), RouterDecorator(), TranslationDecorator()],
 };
 
 export default preview;

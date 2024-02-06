@@ -1,4 +1,4 @@
-import { useCallback, type FC, useEffect, memo } from 'react';
+import { useCallback, type FC, memo } from 'react';
 import { type UseFormRegister, useForm } from 'react-hook-form';
 import { DynamicModuleLoader, classNames } from 'shared/lib';
 import styles from './LoginForm.module.scss';
@@ -6,14 +6,13 @@ import { Loader, Text, Title } from 'shared/ui';
 import { useSelector } from 'react-redux';
 import { getLoginData } from '../../model/selectors/getLoginData';
 import { loginByUserName } from '../../model/services/loginByUserName';
-import { useAppDispatch } from 'app/providers/storeProvider/config/store';
-import { getUser } from 'entities/User/model/selectors/getUser';
 import { useTranslation } from 'react-i18next';
 import { ThemeText } from 'shared/ui/Text/Text';
 import { FormInputWrapper } from '../FormInputWrapper/FormInputWrapper';
 import { FormInput } from '../FormInput/FormInput';
 import { LoginActions, LoginReducer } from '../../model/slice/loginSlice';
 import { type ReducersList } from 'shared/lib/components/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks';
 
 interface LoginFormProps {
     className?: string;
@@ -34,7 +33,6 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 
     const { closeModal, className } = props;
     const { fetchError, isLoading } = useSelector(getLoginData);
-    const user = useSelector(getUser);
     const { t } = useTranslation();
     const {
         register,
@@ -42,16 +40,12 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
         handleSubmit,
         formState: { errors, isValid },
     } = useForm<FormValues>({ mode: 'onChange' });
-    const onSubmit = ({ username, password }: FormValues): void => {
+    const onSubmit = async ({ username, password }: FormValues): Promise<void> => {
         reset();
-        dispatch(loginByUserName({ username, password }));
+        dispatch(loginByUserName({ username, password })).then((result) => {
+            if (result.meta.requestStatus === 'fulfilled') closeModal && closeModal();
+        });
     };
-
-    useEffect(() => {
-        if (user) {
-            closeModal();
-        }
-    }, [user, closeModal]);
 
     const registerFirstName = useCallback(
         (): ReturnType<UseFormRegister<FormValues>> => ({

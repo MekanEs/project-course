@@ -2,22 +2,18 @@ import { type CounterSchema } from '../types/CounterSchema';
 import { CounterActions, CounterReducer } from './counterSlice';
 
 describe('counterSlice.test', () => {
-    let state: Partial<CounterSchema> = { value: 10 };
+    let state: DeepPartial<CounterSchema> = { value: 10 };
 
     beforeEach(() => {
         state = { value: 10 };
     });
     it('increment actions works', () => {
-        expect(
-            CounterReducer(state as CounterSchema, CounterActions.increment())
-        ).toEqual({
+        expect(CounterReducer(state as CounterSchema, CounterActions.increment())).toEqual({
             value: 11,
         });
     });
     it('decrement actions works', () => {
-        expect(
-            CounterReducer(state as CounterSchema, CounterActions.decrement())
-        ).toEqual({
+        expect(CounterReducer(state as CounterSchema, CounterActions.decrement())).toEqual({
             value: 9,
         });
     });

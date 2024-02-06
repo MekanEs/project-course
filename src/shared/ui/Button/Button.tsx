@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, type FC, type ReactNode } from 'react';
+import { memo, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { classNames } from 'shared/lib';
 import styles from './Button.module.scss';
 export enum ButtonTheme {
@@ -24,25 +24,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize;
 }
 
-export const Button: FC<ButtonProps> = (props) => {
-    const {
-        className,
-        children,
-        theme = ButtonTheme.CLEAR,
-        square = false,
-        size = ButtonSize.M,
-        ...otherProps
-    } = props;
+export const Button = memo((props: ButtonProps) => {
+    const { className, children, square, theme = ButtonTheme.CLEAR, size = ButtonSize.M, ...otherProps } = props;
     return (
         <button
-            className={classNames(styles.Button, { [styles.square]: square }, [
-                className,
-                styles[theme],
-                styles[size],
-            ])}
+            className={classNames(styles.Button, { [styles.square]: square }, [className, styles[theme], styles[size]])}
             {...otherProps}
         >
             {children}
         </button>
     );
-};
+});

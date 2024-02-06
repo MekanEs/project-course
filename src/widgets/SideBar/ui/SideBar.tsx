@@ -1,51 +1,32 @@
-import { type FC, useState } from 'react';
+import { useState, memo, useCallback } from 'react';
 import { classNames } from 'shared/lib';
 import styles from './SideBar.module.scss';
-import { AppLink, Button } from 'shared/ui';
+import { Button } from 'shared/ui';
 import { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { ThemeToggler } from 'widgets/ThemeToggler';
 import { LangToggler } from 'widgets/LangToggler/ui/LangToggler';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { useTranslation } from 'react-i18next';
-import AboutIcon from 'shared/assets/icons/about.svg';
-import HomeIcon from 'shared/assets/icons/home.svg';
+import { SideBarItems } from '../model/items';
+import { SideBarItem } from './SidebarItem/SideBarItem';
 interface SideBarProps {
     className?: string;
 }
 
-export const SideBar: FC<SideBarProps> = ({ className }) => {
+export const SideBar = memo(({ className }: SideBarProps) => {
     const [collapsed, setCollapsed] = useState<boolean>(true);
-    const { t } = useTranslation();
 
-    const onToggle: () => void = () => {
+    const onToggle: () => void = useCallback(() => {
         setCollapsed((prev) => !prev);
-    };
+    }, []);
+
     return (
         <div
             data-testid="sidebar"
-            className={classNames(
-                styles.SideBar,
-                { [styles.collapsed]: collapsed },
-                [className]
-            )}
+            className={classNames(styles.SideBar, { [styles.collapsed]: collapsed }, [className])}
         >
             <div className={classNames(styles.items)}>
-                <AppLink
-                    className={classNames(styles.item)}
-                    to={RoutePath.main}
-                >
-                    <HomeIcon className={styles.icon} />
-                    <span className={classNames(styles.link)}>{t('Main')}</span>
-                </AppLink>
-                <AppLink
-                    className={classNames(styles.item)}
-                    to={RoutePath.about}
-                >
-                    <AboutIcon className={styles.icon} />
-                    <span className={classNames(styles.link)}>
-                        {t('About')}
-                    </span>
-                </AppLink>
+                {SideBarItems.map((item) => (
+                    <SideBarItem key={item.path} item={item} collapsed={collapsed} />
+                ))}
             </div>
 
             <Button
@@ -64,4 +45,4 @@ export const SideBar: FC<SideBarProps> = ({ className }) => {
             </div>
         </div>
     );
-};
+});

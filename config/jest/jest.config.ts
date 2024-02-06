@@ -11,16 +11,7 @@ const config: Config = {
     moduleDirectories: ['node_modules', 'src'],
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
 
-    moduleFileExtensions: [
-        'js',
-        'mjs',
-        'cjs',
-        'jsx',
-        'ts',
-        'tsx',
-        'json',
-        'node',
-    ],
+    moduleFileExtensions: ['js', 'mjs', 'cjs', 'jsx', 'ts', 'tsx', 'json', 'node'],
     testEnvironment: 'jsdom',
     testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
     rootDir: '../../',
@@ -33,6 +24,7 @@ const config: Config = {
     },
     globals: {
         _IS_DEV_: true,
+        _API_URL_: '',
     },
     // All imported modules in your tests should be mocked automatically
     // automock: false,

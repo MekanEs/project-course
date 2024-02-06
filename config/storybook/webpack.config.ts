@@ -4,7 +4,6 @@ import { BuildMode, BuildPaths } from '../types/config';
 import webpack from 'webpack';
 import { buildSVGLoader } from '../build/loaders/buildSVGLoader';
 import { RuleSetRule } from 'webpack';
-import { buildPlugin } from '../build/buildPlugins';
 
 export default ({ config }: { config: webpack.Configuration }) => {
     const mode: BuildMode = config.mode || 'development';
@@ -27,6 +26,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config.plugins.push(
         new webpack.DefinePlugin({
             _IS_DEV_: JSON.stringify(isDev),
+            _API_URL_: JSON.stringify(''),
         })
     );
     config.module.rules.push(buildCssLoaders(true));

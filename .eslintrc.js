@@ -41,6 +41,10 @@ module.exports = {
         'react/display-name': 'off',
         'i18next/no-literal-string': [2, { markupOnly: true, ignoreAttribute: ['data-testid'] }],
     },
+    globals: {
+        _API_URL_: true,
+        _IS_DEV_: true,
+    },
     overrides: [
         {
             files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
